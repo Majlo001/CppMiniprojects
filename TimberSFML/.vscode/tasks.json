@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "SFML Compile and Run",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "-I\"C:/Users/Majlo/DevTools/SFML-2.5.1/include\"",
+                "-c",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.o"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "dependsOn": "SFML Link"
+        },
+        {
+            "label": "SFML Link",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "${fileDirname}\\*.o",
+                "-o",
+                "${fileDirname}\\output\\${fileBasenameNoExtension}",
+                "-L\"C:/Users/Majlo/DevTools/SFML-2.5.1/lib\"",
+                "-lsfml-graphics",
+                "-lsfml-window",
+                "-lsfml-system",
+                "-lsfml-audio"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            }
+        }
+    ]
+}
