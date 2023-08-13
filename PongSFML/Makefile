@@ -1,12 +1,26 @@
+# Definicje zmiennych
+CXX = g++
+CXXFLAGS = -g -I"C:/Users/Majlo/DevTools/SFML-2.5.1/include"
+LDFLAGS = -L"C:/Users/Majlo/DevTools/SFML-2.5.1/lib" -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
+# Lista plików źródłowych
+SOURCES = main.cpp Bat.cpp Ball.cpp Obstacle.cpp
+
+# Automatyczna generacja listy plików obiektowych
+OBJECTS = $(patsubst %.cpp,output/%.o,$(SOURCES))
+
+# Cel główny
 all: compile link open
 
-compile:
-	g++ -g -I"C:/Users/Majlo/DevTools/SFML-2.5.1/include" -c main.cpp -o output/main.o
-	g++ -g -I"C:/Users/Majlo/DevTools/SFML-2.5.1/include" -c Bat.cpp -o output/Bat.o
-	g++ -g -I"C:/Users/Majlo/DevTools/SFML-2.5.1/include" -c Ball.cpp -o output/Ball.o
+# Reguła kompilacji plików źródłowych do plików obiektowych
+compile: $(OBJECTS) 
+	$(foreach src,$(SOURCES),$(CXX) $(CXXFLAGS) -c $(src) -o output/$(notdir $(src:.cpp=.o));)
 
-link:
-	g++ output/main.o output/Bat.o output/Ball.o -o output/main -L"C:/Users/Majlo/DevTools/SFML-2.5.1/lib" -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
+# Reguła linkowania
+link: $(OBJECTS)
+	$(CXX) $(OBJECTS) -o output/main $(LDFLAGS)
+
+# Reguła otwierania
 open:
 	start output/main.exe

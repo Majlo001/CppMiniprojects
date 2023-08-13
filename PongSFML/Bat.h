@@ -6,7 +6,6 @@ using namespace sf;
 class Bat {
 private:
     Vector2f m_Position;
-    // A RectangleShape object
     RectangleShape m_Shape;
     float m_Speed = 1000.0f;
 

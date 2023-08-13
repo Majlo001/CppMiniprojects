@@ -20,6 +20,14 @@ float Ball::getXVelocity() {
     return m_DirectionX;
 }
 
+float Ball::getYVelocity() {
+    return m_DirectionY;
+}
+
+Vector2f Ball::getDirection() {
+    return Vector2f(m_DirectionX, m_DirectionY);
+}
+
 void Ball::reboundSides() {
     m_DirectionX = -m_DirectionX;
 }
@@ -29,7 +37,7 @@ void Ball::reboundBatOrTop() {
 }
 
 void Ball::reboundBottom() {
-    m_Position.y = 0;
+    m_Position.y = 20;
     m_Position.x = 500;
     m_DirectionY = -m_DirectionY;
 }
@@ -39,4 +47,13 @@ void Ball::update(Time dt) {
     m_Position.x += m_DirectionX * m_Speed * dt.asSeconds();
 
     m_Shape.setPosition(m_Position);
+}
+
+
+void Ball::updateSpeed(float value) {
+    m_Speed *= value;
+}
+
+void Ball::restartSpeed() {
+    m_Speed = 500.0f;
 }
