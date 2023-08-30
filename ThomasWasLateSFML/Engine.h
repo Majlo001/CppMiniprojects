@@ -4,6 +4,9 @@
 #include "Thomas.h"
 #include "Bob.h"
 #include "LevelManager.h"
+#include "SoundManager.h"
+#include "HUD.h"
+
 
 using namespace sf;
 
@@ -14,6 +17,12 @@ private:
     Bob m_Bob;
 
     LevelManager m_LM;
+    SoundManager m_SM;
+
+    Hud m_Hud;
+    int m_FramesSinceLastHUDUpdate = 0;
+    int m_TargetFramesPerHUDUpdate = 500;
+
 
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
@@ -53,6 +62,9 @@ private:
     void loadLevel();
 
     bool detectCollisions(PlayableCharacter& character);
+
+    void populateEmitters(vector <Vector2f>& vSoundEmitters, int** arrayLevel);
+    vector <Vector2f> m_FireEmitters;
 	
 public:
 	Engine();
