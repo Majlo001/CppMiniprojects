@@ -4,7 +4,7 @@ CXXFLAGS = -g -I"C:/Users/Majlo/DevTools/SFML-2.5.1/include"
 LDFLAGS = -L"C:/Users/Majlo/DevTools/SFML-2.5.1/lib" -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 # Lista plików źródłowych
-SOURCES = Main.cpp Input.cpp Draw.cpp Engine.cpp TextureHolder.cpp Update.cpp  Bob.cpp Thomas.cpp PlayableCharacter.cpp LevelManager.cpp DetectCollisions.cpp LoadLevel.cpp PopulateEmitters.cpp HUD.cpp SoundManager.cpp 
+SOURCES = Main.cpp Input.cpp Draw.cpp Engine.cpp TextureHolder.cpp Update.cpp  Bob.cpp  Thomas.cpp PlayableCharacter.cpp LevelManager.cpp DetectCollisions.cpp LoadLevel.cpp  PopulateEmitters.cpp HUD.cpp SoundManager.cpp Particle.cpp ParticleSystem.cpp
 
 # Automatyczna generacja listy plików obiektowych
 OBJECTS = $(patsubst %.cpp,output/%.o,$(SOURCES))

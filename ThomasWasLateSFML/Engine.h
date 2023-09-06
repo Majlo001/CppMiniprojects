@@ -6,6 +6,7 @@
 #include "LevelManager.h"
 #include "SoundManager.h"
 #include "HUD.h"
+#include "ParticleSystem.h"
 
 
 using namespace sf;
@@ -13,6 +14,8 @@ using namespace sf;
 class Engine {
 private:
 	TextureHolder th;
+    ParticleSystem m_PS;
+
     Thomas m_Thomas;
     Bob m_Bob;
 
@@ -42,6 +45,9 @@ private:
 
 	Sprite m_BackgroundSprite;
 	Texture m_BackgroundTexture;
+
+    Shader m_RippleShader;
+
 
 	bool m_Playing = false;
 	bool m_Character1 = true;

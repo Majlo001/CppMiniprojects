@@ -19,10 +19,15 @@ Engine::Engine() {
 	if (!sf::Shader::isAvailable()) {
 		m_Window.close();
 	}
+    else {
+        m_RippleShader.loadFromFile("shaders/vertShader.vert", "shaders/rippleShader.frag");
+    }
 
 	m_BackgroundTexture = TextureHolder::GetTexture("graphics/background.png");
 	m_BackgroundSprite.setTexture(m_BackgroundTexture);
     m_TextureTiles = TextureHolder::GetTexture("graphics/tiles_sheet.png");
+
+    m_PS.init(1000);
 }
 
 void Engine::run() {
